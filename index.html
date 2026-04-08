@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<!--
+  bergform.ch — einfach wanderbar!
+  © Jonas Immanuel Frey. All rights reserved.
+-->
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>bergform.ch — einfach wanderbar!</title>
+  <meta name="description" content="bergform.ch — 3D-Modelle der Schweizer Berge zum Anfassen. Einfach Wanderbar!">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400&display=swap');
+
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #0a0a0a;
+      color: #fff;
+    }
+
+    .bg-video {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .bg-video img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      /* Slow the GIF down via a subtle approach: we dim + blur slightly for cinematic feel */
+      filter: brightness(0.45) contrast(1.1);
+    }
+
+    .overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      background: radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.5) 100%);
+    }
+
+    .content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .slogan {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.5rem, 8vw, 6rem);
+      letter-spacing: 0.02em;
+      line-height: 1.15;
+      text-shadow: 0 2px 40px rgba(0,0,0,0.6);
+      animation: fadeUp 1.2s ease-out both;
+    }
+
+    .tagline {
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      font-size: clamp(0.9rem, 2vw, 1.25rem);
+      margin-top: 1.5rem;
+      opacity: 0.8;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-shadow: 0 1px 20px rgba(0,0,0,0.5);
+      animation: fadeUp 1.2s ease-out 0.3s both;
+    }
+
+    .footer {
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      animation: fadeUp 1.2s ease-out 0.6s both;
+    }
+
+    .footer .logo {
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      font-size: 0.85rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      opacity: 0.5;
+    }
+
+    .footer .contact a {
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      color: #fff;
+      opacity: 0.6;
+      text-decoration: none;
+      transition: opacity 0.3s;
+    }
+
+    .footer .contact a:hover {
+      opacity: 1;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg-video">
+    <img src="topoprints.gif" alt="3D-Bergmodelle der Schweiz">
+  </div>
+
+  <div class="overlay"></div>
+
+  <main class="content">
+    <h1 class="slogan">einfach wanderbar!</h1>
+    <p class="tagline">3D-Modelle der Schweizer Bergwelt</p>
+  </main>
+
+  <div class="footer">
+    <div class="contact"><a href="mailto:topoprints@proton.me">topoprints@proton.me</a></div>
+    <div class="logo">bergform.ch</div>
+  </div>
+
+</body>
+</html>
