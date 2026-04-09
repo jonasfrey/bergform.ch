@@ -1,46 +1,57 @@
-/**
- * bergform.ch — Deno web server
- * © Jonas Immanuel Frey. All rights reserved.
- */
+// Copyright (c) Jonas Immanuel Frey. All rights reserved.
+// Licensed under the terms specified by Jonas Immanuel Frey.
 
 const PORT = 8002;
 
-const MIME_TYPES: Record<string, string> = {
-  ".html": "text/html; charset=utf-8",
-  ".css": "text/css; charset=utf-8",
-  ".js": "application/javascript; charset=utf-8",
-  ".json": "application/json",
-  ".gif": "image/gif",
-  ".jpg": "image/jpeg",
-  ".jpeg": "image/jpeg",
-  ".png": "image/png",
-  ".svg": "image/svg+xml",
-  ".webp": "image/webp",
-  ".mp4": "video/mp4",
-  ".webm": "video/webm",
-  ".ico": "image/x-icon",
-};
-
-function getMimeType(path: string): string {
-  const ext = path.substring(path.lastIndexOf("."));
-  return MIME_TYPES[ext] ?? "application/octet-stream";
-}
-
-Deno.serve({ port: PORT }, async (req: Request): Promise<Response> => {
+async function handler(req: Request): Promise<Response> {
   const url = new URL(req.url);
-  let path = url.pathname === "/" ? "/index.html" : url.pathname;
+  let path = url.pathname;
 
-  // Prevent directory traversal
-  path = path.replaceAll("..", "");
+  if (path === "/") {
+    path = "/index.html";
+  }
+
+  const filePath = `./static${path}`;
 
   try {
-    const file = await Deno.open(`.${path}`, { read: true });
-    return new Response(file.readable, {
-      headers: { "Content-Type": getMimeType(path) },
+    const file = await Deno.readFile(filePath);
+    const contentType = getContentType(filePath);
+    return new Response(file, {
+      headers: { "content-type": contentType },
     });
   } catch {
     return new Response("Not Found", { status: 404 });
   }
-});
+}
 
-console.log(`bergform.ch running at http://localhost:${PORT}`);
+function getContentType(path: string): string {
+  const ext = path.split(".").pop()?.toLowerCase();
+  const types: Record<string, string> = {
+    html: "text/html; charset=utf-8",
+    css: "text/css; charset=utf-8",
+    js: "application/javascript; charset=utf-8",
+    json: "application/json",
+    png: "image/png",
+    jpg: "image/jpeg",
+    jpeg: "image/jpeg",
+    svg: "image/svg+xml",
+    ico: "image/x-icon",
+    webp: "image/webp",
+    mp4: "video/mp4",
+    webm: "video/webm",
+    gif: "image/gif",
+    stl: "application/octet-stream",
+    glb: "model/gltf-binary",
+    gltf: "model/gltf+json",
+    woff2: "font/woff2",
+    woff: "font/woff",
+  };
+  return types[ext || ""] || "application/octet-stream";
+}
+
+console.log(
+  `\n  Copyright (c) Jonas Immanuel Frey. All rights reserved.\n`
+);
+console.log(`  bergform.ch — server running at http://localhost:${PORT}\n`);
+
+Deno.serve({ port: PORT }, handler);
