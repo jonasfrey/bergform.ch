@@ -32,11 +32,10 @@
       z-index: 0;
     }
 
-    .bg-video img {
+    .bg-video video {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      /* Slow the GIF down via a subtle approach: we dim + blur slightly for cinematic feel */
       filter: brightness(0.45) contrast(1.1);
     }
 
@@ -132,7 +131,9 @@
 <body>
 
   <div class="bg-video">
-    <img src="topoprints.gif" alt="3D-Bergmodelle der Schweiz">
+    <video autoplay muted loop playsinline>
+      <source src="matterhorn.mp4" type="video/mp4">
+    </video>
   </div>
 
   <div class="overlay"></div>
