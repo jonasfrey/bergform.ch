@@ -1,0 +1,9 @@
+<!-- bergform.ch logo - Licensed to Jonas Immanuel Frey -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 9" width="360" height="180">
+  <!-- Left slope -->
+  <line x1="0" y1="0" x2="9" y2="9" stroke="black" stroke-width="0.5" stroke-linecap="round"/>
+  <!-- Right slope -->
+  <line x1="9" y1="0" x2="18" y2="9" stroke="black" stroke-width="0.5" stroke-linecap="round"/>
+  <!-- Inner detail from peak to midpoint of left slope -->
+  <line x1="9" y1="0" x2="4.5" y2="4.5" stroke="black" stroke-width="0.5" stroke-linecap="round"/>
+</svg>

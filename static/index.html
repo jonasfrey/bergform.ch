@@ -19,12 +19,18 @@
 
   <header class="hero">
     <div class="hero-bg">
-      <video autoplay muted loop playsinline>
-        <source src="/matterhorn.mp4" type="video/mp4">
+      <video id="hero-video" autoplay muted loop playsinline>
+        <source id="hero-source" src="/matterhorn.mp4" type="video/mp4">
       </video>
     </div>
     <div class="hero-content">
-      <h1>Einfach Wanderbar</h1>
+      <h1 class="slogan-carousel" aria-live="polite">
+        <span class="slogan active">Wir machen «Berggreifbar»!</span>
+        <span class="slogan">Ein Stück Schweiz zum Anfassen</span>
+        <span class="slogan">Dein Stück Schweiz!</span>
+        <span class="slogan">Einfach Wanderbar!</span>
+        <span class="slogan">Hohe Kunst!</span>
+      </h1>
       <p class="hero-sub">Die Schweizer Bergwelt als präzises 3D-Topografie-Modell — Anfassen und Bestaunen.</p>
       <a href="#contact" class="btn btn-lg">Kontakt aufnehmen</a>
     </div>
@@ -75,6 +81,35 @@
     </div>
   </footer>
 
+
+  <script>
+    /* Copyright (c) Jonas Immanuel Frey. All rights reserved. */
+    (function () {
+      /* Slogan carousel */
+      const slogans = document.querySelectorAll('.slogan-carousel .slogan');
+      let current = 0;
+      setInterval(function () {
+        slogans[current].classList.remove('active');
+        current = (current + 1) % slogans.length;
+        slogans[current].classList.add('active');
+      }, 3500);
+
+      /* Random background video */
+      var videos = ['matterhorn', 'stockhorn', 'creux_du_van'];
+      var pick = videos[Math.floor(Math.random() * videos.length)];
+      var video = document.getElementById('hero-video');
+      var source = document.getElementById('hero-source');
+      if (pick !== 'matterhorn') {
+        source.src = '/' + pick + '.mp4';
+        video.load();
+      }
+      /* Ensure looping after dynamic source swap */
+      video.addEventListener('ended', function () {
+        video.currentTime = 0;
+        video.play();
+      });
+    })();
+  </script>
 
 </body>
 </html>
