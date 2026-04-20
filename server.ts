@@ -52,6 +52,7 @@ function getContentType(path: string): string {
 console.log(
   `\n  Copyright (c) Jonas Immanuel Frey. All rights reserved.\n`
 );
-console.log(`  bergform.ch — server running at http://localhost:${PORT}\n`);
+console.log(`  bergform.ch / bergzwerg.ch — server running at http://localhost:${PORT}`);
+console.log(`  Content is selected dynamically from the request's Host header / window.location.hostname.\n`);
 
 Deno.serve({ port: PORT }, handler);

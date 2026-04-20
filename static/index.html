@@ -8,12 +8,62 @@
   <title>bergform.ch — 3D-Topografie der Schweizer Bergwelt</title>
   <meta name="description" content="Die Schweizer Bergwelt als präzises 3D-Modell — zum Anfassen und Bestaunen. Einfach wanderbar!">
   <link rel="stylesheet" href="/styles.css">
+  <script>
+    /* Copyright (c) Jonas Immanuel Frey. All rights reserved. */
+    (function () {
+      var host = (location.hostname || '').replace(/^www\./, '').toLowerCase();
+      var isZwerg = host.indexOf('bergzwerg') !== -1;
+      var brand = isZwerg ? 'bergzwerg' : 'bergform';
+      var BRANDS = {
+        bergform: {
+          prefix: 'berg',
+          suffix: 'form',
+          domain: 'bergform.ch',
+          title: 'bergform.ch — 3D-Topografie der Schweizer Bergwelt',
+          description: 'Die Schweizer Bergwelt als präzises 3D-Modell — zum Anfassen und Bestaunen. Einfach wanderbar!',
+          heroSub: 'Die Schweizer Bergwelt als präzises 3D-Topografie-Modell — Anfassen und Bestaunen.',
+          sectionTitle: 'Die Schweiz in 3D',
+          sectionSub: 'Jeder Gipfel aus hochpräzisen Daten von Swisstopo.',
+          contactSub: 'Interesse an einem individuellen Topografie-Modell? Einen bestimmten Gipfel im Sinn? Melde dich.',
+          footerTagline: 'Schweizer Topografie. Echte Höhendaten. Zum Anfassen.',
+          slogans: [
+            'Wir machen «Berggreifbar»!',
+            'Dein Stück Schweiz!',
+            'Einfach Wanderbar!',
+            'Hohe Kunst!'
+          ]
+        },
+        bergzwerg: {
+          prefix: 'berg',
+          suffix: 'zwerg',
+          domain: 'bergzwerg.ch',
+          title: 'bergzwerg.ch — Kleine Berge, grosse Freude',
+          description: 'Die Schweizer Bergwelt als handliches 3D-Miniaturmodell — Berggreifbar im Kleinformat.',
+          heroSub: 'Die Schweizer Bergwelt als handliches 3D-Miniaturmodell — im Kleinformat zum Mitnehmen.',
+          sectionTitle: 'Die Schweiz in Miniatur',
+          sectionSub: 'Jeder Gipfel aus hochpräzisen Daten von Swisstopo — als Bergzwerg zum Mitnehmen.',
+          contactSub: 'Interesse an einem eigenen Bergzwerg? Einen bestimmten Gipfel im Sinn? Melde dich.',
+          footerTagline: 'Schweizer Topografie im Kleinformat. Echte Höhendaten. Zum Mitnehmen.',
+          slogans: [
+            'Klein, aber Gipfel!',
+            'Dein Zwerg vom Berg!',
+            'Die Schweiz in der Hand!',
+            'Berggreifbar im Kleinformat!'
+          ]
+        }
+      };
+      var cfg = BRANDS[brand];
+      window.__BRAND__ = cfg;
+      document.documentElement.setAttribute('data-brand', brand);
+      document.title = cfg.title;
+    })();
+  </script>
 </head>
 <body>
 
   <nav class="nav">
     <div class="nav-inner">
-      <a href="/" class="logo">berg<span>form</span> <svg class="logo-icon" viewBox="0 0 18 9" width="24" height="12" fill="none"><line x1="0" y1="0" x2="9" y2="9" stroke="currentColor" stroke-width="0.8"/><line x1="9" y1="0" x2="18" y2="9" stroke="currentColor" stroke-width="0.8"/><line x1="9" y1="0" x2="4.5" y2="4.5" stroke="currentColor" stroke-width="0.8"/></svg></a>
+      <a href="/" class="logo"><span data-brand-prefix>berg</span><span data-brand-suffix>form</span> <svg class="logo-icon" viewBox="0 0 18 9" width="24" height="12" fill="none"><line x1="0" y1="0" x2="9" y2="9" stroke="currentColor" stroke-width="0.8"/><line x1="9" y1="0" x2="18" y2="9" stroke="currentColor" stroke-width="0.8"/><line x1="9" y1="0" x2="4.5" y2="4.5" stroke="currentColor" stroke-width="0.8"/></svg></a>
     </div>
   </nav>
 
@@ -26,12 +76,11 @@
     <div class="hero-content">
       <h1 class="slogan-carousel" aria-live="polite">
         <span class="slogan active">Wir machen «Berggreifbar»!</span>
-        <!-- <span class="slogan">Ein Stück Schweiz zum Anfassen</span> -->
         <span class="slogan">Dein Stück Schweiz!</span>
         <span class="slogan">Einfach Wanderbar!</span>
         <span class="slogan">Hohe Kunst!</span>
       </h1>
-      <p class="hero-sub">Die Schweizer Bergwelt als präzises 3D-Topografie-Modell — Anfassen und Bestaunen.</p>
+      <p class="hero-sub" data-brand-hero-sub>Die Schweizer Bergwelt als präzises 3D-Topografie-Modell — Anfassen und Bestaunen.</p>
       <a href="#contact" class="btn btn-lg">Kontakt aufnehmen</a>
     </div>
     <div class="scroll-hint">
@@ -44,8 +93,8 @@
 
   <section id="modelle" class="section">
     <div class="container">
-      <h2 class="section-title">Die Schweiz in 3D</h2>
-      <p class="section-subtitle">Jeder Gipfel aus hochpräzisen Daten von Swisstopo.</p>
+      <h2 class="section-title" data-brand-section-title>Die Schweiz in 3D</h2>
+      <p class="section-subtitle" data-brand-section-sub>Jeder Gipfel aus hochpräzisen Daten von Swisstopo.</p>
       <div class="gallery">
         <a href="#contact" class="gallery-card">
           <div class="gallery-media">
@@ -87,7 +136,7 @@
   <section id="contact" class="section">
     <div class="container contact-container">
       <h2 class="section-title">Kontakt</h2>
-      <p class="section-subtitle">Interesse an einem individuellen Topografie-Modell? Einen bestimmten Gipfel im Sinn? Melde dich.</p>
+      <p class="section-subtitle" data-brand-contact-sub>Interesse an einem individuellen Topografie-Modell? Einen bestimmten Gipfel im Sinn? Melde dich.</p>
       <a href="https://jonasfrey.ch" target="_blank" rel="noopener" class="btn btn-lg">jonasfrey.ch</a>
     </div>
   </section>
@@ -95,8 +144,8 @@
   <footer class="footer">
     <div class="container footer-inner">
       <div class="footer-brand">
-        <a href="/" class="logo">berg<span>form</span> <svg class="logo-icon" viewBox="0 0 18 9" width="24" height="12" fill="none"><line x1="0" y1="0" x2="9" y2="9" stroke="currentColor" stroke-width="0.8"/><line x1="9" y1="0" x2="18" y2="9" stroke="currentColor" stroke-width="0.8"/><line x1="9" y1="0" x2="4.5" y2="4.5" stroke="currentColor" stroke-width="0.8"/></svg></a>
-        <p>Schweizer Topografie. Echte Höhendaten. Zum Anfassen.</p>
+        <a href="/" class="logo"><span data-brand-prefix>berg</span><span data-brand-suffix>form</span> <svg class="logo-icon" viewBox="0 0 18 9" width="24" height="12" fill="none"><line x1="0" y1="0" x2="9" y2="9" stroke="currentColor" stroke-width="0.8"/><line x1="9" y1="0" x2="18" y2="9" stroke="currentColor" stroke-width="0.8"/><line x1="9" y1="0" x2="4.5" y2="4.5" stroke="currentColor" stroke-width="0.8"/></svg></a>
+        <p data-brand-footer-tagline>Schweizer Topografie. Echte Höhendaten. Zum Anfassen.</p>
       </div>
       <div class="footer-copy">
         <p>&copy; Jonas Immanuel Frey. All rights reserved.</p>
@@ -108,14 +157,51 @@
   <script>
     /* Copyright (c) Jonas Immanuel Frey. All rights reserved. */
     (function () {
+      var cfg = window.__BRAND__;
+
+      if (cfg) {
+        var meta = document.querySelector('meta[name="description"]');
+        if (meta) meta.setAttribute('content', cfg.description);
+
+        document.querySelectorAll('[data-brand-prefix]').forEach(function (el) {
+          el.textContent = cfg.prefix;
+        });
+        document.querySelectorAll('[data-brand-suffix]').forEach(function (el) {
+          el.textContent = cfg.suffix;
+        });
+
+        var set = function (sel, text) {
+          var el = document.querySelector(sel);
+          if (el) el.textContent = text;
+        };
+        set('[data-brand-hero-sub]', cfg.heroSub);
+        set('[data-brand-section-title]', cfg.sectionTitle);
+        set('[data-brand-section-sub]', cfg.sectionSub);
+        set('[data-brand-contact-sub]', cfg.contactSub);
+        set('[data-brand-footer-tagline]', cfg.footerTagline);
+
+        var carousel = document.querySelector('.slogan-carousel');
+        if (carousel && Array.isArray(cfg.slogans) && cfg.slogans.length) {
+          carousel.innerHTML = '';
+          cfg.slogans.forEach(function (text, i) {
+            var span = document.createElement('span');
+            span.className = 'slogan' + (i === 0 ? ' active' : '');
+            span.textContent = text;
+            carousel.appendChild(span);
+          });
+        }
+      }
+
       /* Slogan carousel */
-      const slogans = document.querySelectorAll('.slogan-carousel .slogan');
-      let current = 0;
-      setInterval(function () {
-        slogans[current].classList.remove('active');
-        current = (current + 1) % slogans.length;
-        slogans[current].classList.add('active');
-      }, 3500);
+      var slogans = document.querySelectorAll('.slogan-carousel .slogan');
+      var current = 0;
+      if (slogans.length > 1) {
+        setInterval(function () {
+          slogans[current].classList.remove('active');
+          current = (current + 1) % slogans.length;
+          slogans[current].classList.add('active');
+        }, 3500);
+      }
 
       /* Random background video */
       var videos = ['matterhorn', 'stockhorn', 'creux_du_van'];
