@@ -73,8 +73,12 @@ body {
   margin-left: 6px;
 }
 
-.logo span {
+.logo [data-brand-prefix] {
   color: var(--accent);
+}
+
+.logo [data-brand-suffix] {
+  color: var(--text);
 }
 
 .nav-links {
