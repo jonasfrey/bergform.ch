@@ -1,0 +1,8 @@
+<!-- Copyright (c) Jonas Immanuel Frey. All rights reserved. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18">
+  <g transform="translate(0 4.5)">
+    <line x1="0" y1="0" x2="9" y2="9" stroke="#D52B1E" stroke-width="1.4" stroke-linecap="round"/>
+    <line x1="9" y1="0" x2="18" y2="9" stroke="#D52B1E" stroke-width="1.4" stroke-linecap="round"/>
+    <line x1="9" y1="0" x2="4.5" y2="4.5" stroke="#D52B1E" stroke-width="1.4" stroke-linecap="round"/>
+  </g>
+</svg>
